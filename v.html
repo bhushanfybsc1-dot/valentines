@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Valentine</title>
+
+<style>
+
+body{
+text-align:center;
+font-family:Arial;
+background:#ffe6f0;
+padding-top:80px;
+overflow:hidden;
+}
+
+button{
+padding:18px 32px;
+font-size:22px;
+border-radius:12px;
+border:none;
+margin:12px;
+}
+
+#yes{ background:#ff3b6b; color:white; }
+
+#no{
+background:#777;
+color:white;
+position:fixed;
+left:55%;
+top:55%;
+}
+
+img{
+margin-top:30px;
+width:80%;
+max-width:340px;
+border-radius:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? ❤️</h1>
+
+<button id="yes">Yes</button>
+<button id="no">No</button>
+
+<div id="result"></div>
+
+<script>
+
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+
+let tries=0;
+
+/* PHONE SAFE MOVE FUNCTION */
+
+function moveNo(){
+
+tries++;
+
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-80);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+/* AFTER 3 TOUCHES SHOW GUN CAT */
+
+if(tries>=3){
+
+document.getElementById("result").innerHTML=
+"<h2>😾 STOP MESSING WITH ME!</h2>"+
+"<img src='cat-gun.jpg'>";
+
+}
+
+}
+
+/* IMPORTANT — TOUCH EVENTS FOR PHONES */
+
+noBtn.addEventListener("touchstart",moveNo);
+noBtn.addEventListener("click",moveNo);
+
+/* YES CLICK */
+
+yesBtn.addEventListener("click",()=>{
+
+document.body.innerHTML=
+"<h1>YAY ❤️</h1>"+
+"<img src='cat-rose.jpg'>"+
+"<h2>Best decision ever 😆</h2>";
+
+});
+
+</script>
+
+</body>
+</html>
